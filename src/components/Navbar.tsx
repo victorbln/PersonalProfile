@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
+import { Analytics } from "@vercel/analytics/next"
 
 export default function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
