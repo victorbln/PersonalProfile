@@ -1,0 +1,68 @@
+[
+    {
+        "id": "intercept-logging-quarkus",
+        "title": "How to intercept logging messages with Quarkus for testing purposes",
+        "excerpt": "When developing with Quarkus, logging is essential for monitoring and debugging. Learn how to utilize an InMemoryLogHandler to retrieve and assert log messages in your unit tests.",
+        "content": "A comprehensive guide on intercepting and verifying log messages in Quarkus using InMemoryLogHandler. Perfect for ensuring your logging mechanisms work as intended during testing.",
+        "date": "2024-07-24",
+        "category": "Java",
+        "tags": ["Testing", "Logging", "Quarkus", "Java", "Unit Testing"],
+        "image": "",
+        "readTime": "4 min read"
+    },
+    {
+        "id": "distributed-systems-basics",
+        "title": "Understanding Distributed Systems: A Practical Approach",
+        "excerpt": "Exploring the fundamentals of distributed systems through real-world examples and challenges faced in production environments.",
+        "content": "A deep dive into distributed systems concepts including consistency, availability, and partition tolerance.",
+        "date": "2024-11-15",
+        "category": "System Design",
+        "tags": ["Distributed Systems", "Architecture", "Backend"],
+        "image": "",
+        "readTime": "8 min read"
+    },
+    {
+        "id": "kubernetes-production",
+        "title": "Kubernetes in Production: Lessons Learned",
+        "excerpt": "Key takeaways from running Kubernetes clusters in production, including monitoring, scaling, and troubleshooting strategies.",
+        "content": "Practical insights from managing production Kubernetes deployments.",
+        "date": "2024-10-20",
+        "category": "DevOps",
+        "tags": ["Kubernetes", "DevOps", "Cloud", "Production"],
+        "image": "",
+        "readTime": "10 min read"
+    },
+    {
+        "id": "spring-boot-best-practices",
+        "title": "Spring Boot Best Practices for Enterprise Applications",
+        "excerpt": "A collection of best practices and patterns for building robust and scalable Spring Boot applications.",
+        "content": "Covering configuration management, error handling, and performance optimization in Spring Boot.",
+        "date": "2024-09-10",
+        "category": "Java",
+        "tags": ["Spring Boot", "Java", "Best Practices", "Enterprise"],
+        "image": "",
+        "readTime": "7 min read"
+    },
+    {
+        "id": "cicd-gitlab",
+        "title": "Building Efficient CI/CD Pipelines with GitLab",
+        "excerpt": "How to design and implement efficient CI/CD workflows using GitLab CI, focusing on speed and reliability.",
+        "content": "Step-by-step guide to creating production-ready CI/CD pipelines with GitLab.",
+        "date": "2024-08-05",
+        "category": "DevOps",
+        "tags": ["CI/CD", "GitLab", "DevOps", "Automation"],
+        "image": "",
+        "readTime": "6 min read"
+    },
+    {
+        "id": "career-growth-engineers",
+        "title": "Career Growth Tips for Software Engineers",
+        "excerpt": "Practical advice for advancing your career as a software engineer, from technical skills to soft skills.",
+        "content": "Insights on building a successful engineering career based on personal experience.",
+        "date": "2024-07-01",
+        "category": "Career",
+        "tags": ["Career", "Software Engineering", "Growth", "Mentorship"],
+        "image": "",
+        "readTime": "5 min read"
+    }
+]
