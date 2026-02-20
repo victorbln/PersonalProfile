@@ -84,7 +84,7 @@ export default function Footer() {
                 <Linkedin className="h-5 w-5" />
               </Link>
               <Link
-                href="mailto:balanvictor1567@gmail.com"
+                href="mailto:victorbalan9@gmail.com"
                 className="flex items-center justify-center w-10 h-10 rounded-full bg-surface border border-border text-text-muted hover:text-primary hover:bg-primary/10 hover:border-primary/30 transition-all"
                 aria-label="Email"
               >

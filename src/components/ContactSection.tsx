@@ -9,7 +9,7 @@ export default function ContactSection() {
   const [emailCopied, setEmailCopied] = useState(false);
 
   const copyEmail = () => {
-    navigator.clipboard.writeText("balanvictor1567@gmail.com");
+    navigator.clipboard.writeText("victorbalan9@gmail.com");
     setEmailCopied(true);
     setTimeout(() => setEmailCopied(false), 2000);
   };
@@ -64,14 +64,14 @@ export default function ContactSection() {
               className="group flex items-center justify-between p-4 rounded-xl bg-surface-alt hover:bg-primary/5 border border-border hover:border-primary/30 transition-all"
             >
               <a
-                href="mailto:balanvictor1567@gmail.com"
+                href="mailto:victorbalan9@gmail.com"
                 className="flex items-center gap-3 flex-grow"
               >
                 <div className="p-2 rounded-full bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
                   <Mail className="h-5 w-5" />
                 </div>
                 <span className="text-foreground font-medium">
-                  balanvictor1567@gmail.com
+                  victorbalan9@gmail.com
                 </span>
               </a>
               <button
