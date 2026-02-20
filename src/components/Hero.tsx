@@ -3,25 +3,23 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, Github, Linkedin, ChevronDown } from "lucide-react";
-import AnimatedBackground from "./AnimatedBackground";
 
 export default function Hero() {
     const { scrollY } = useScroll();
-    const y1 = useTransform(scrollY, [0, 500], [0, 150]);
-    const y2 = useTransform(scrollY, [0, 500], [0, -150]);
+    const y1 = useTransform(scrollY, [0, 500], [0, 120]);
+    const y2 = useTransform(scrollY, [0, 500], [0, -120]);
     const opacity = useTransform(scrollY, [0, 300], [1, 0]);
 
     return (
-        <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 pt-20 sm:px-6 lg:px-8 bg-gradient-radial">
-            <AnimatedBackground />
-            
+        <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 pt-20 sm:px-6 lg:px-8">
+            {/* Hero-specific soft glows on top of the global orbs */}
             <motion.div
                 style={{ y: y1 }}
-                className="pointer-events-none absolute left-1/4 top-1/4 h-64 w-64 rounded-full bg-primary/20 blur-[100px]"
+                className="pointer-events-none absolute left-1/4 top-1/3 h-80 w-80 rounded-full bg-primary/10 blur-[120px]"
             />
             <motion.div
                 style={{ y: y2 }}
-                className="pointer-events-none absolute bottom-1/4 right-1/4 h-64 w-64 rounded-full bg-secondary/20 blur-[100px]"
+                className="pointer-events-none absolute right-1/4 bottom-1/3 h-80 w-80 rounded-full bg-secondary/10 blur-[120px]"
             />
 
             <motion.div
@@ -38,7 +36,7 @@ export default function Hero() {
                     className="mb-6"
                 >
                     <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-foreground mb-4">
-                        Hey, I'm <span className="text-gradient">Victor</span> 👋
+                        Hi, I'm <span className="text-gradient">Victor Balan</span>
                     </h1>
                 </motion.div>
 
@@ -48,7 +46,7 @@ export default function Hero() {
                     transition={{ duration: 0.8, delay: 0.2 }}
                     className="text-2xl sm:text-3xl font-semibold text-foreground mb-6"
                 >
-                    I build stuff with Java, Spring Boot, and Kubernetes
+                    Software Engineer — Backend, Cloud & Distributed Systems
                 </motion.h2>
 
                 <motion.p
@@ -57,9 +55,31 @@ export default function Hero() {
                     transition={{ duration: 0.8, delay: 0.4 }}
                     className="mx-auto max-w-2xl text-lg text-text-secondary leading-relaxed mb-10"
                 >
-                    Currently at <span className="text-primary font-medium">ASSIST Software</span>, where I design distributed systems
-                    that handle millions of transactions. I'm passionate about clean architecture, DevOps, and helping other developers level up.
+                    3+ years engineering production-grade systems at <span className="text-primary font-medium">ASSIST Software</span> — from high-throughput iGaming backends
+                    to zero-downtime database migrations handling <span className="text-foreground font-medium">1M+ transactions/hour</span>.
+                    Passionate about clean architecture, cloud-native infrastructure, and scalable system design.
                 </motion.p>
+
+                {/* Impact metrics */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.5 }}
+                    className="mx-auto max-w-lg mb-10"
+                >
+                    <div className="grid grid-cols-3 divide-x divide-border rounded-2xl border border-border bg-surface/60 backdrop-blur-sm shadow-md overflow-hidden">
+                        {[
+                            { value: "3+", label: "Years experience" },
+                            { value: "1M+", label: "Transactions / hr" },
+                            { value: "70%", label: "Load reduced" },
+                        ].map((stat, i) => (
+                            <div key={i} className="px-4 py-4 text-center">
+                                <div className="text-2xl font-bold text-primary">{stat.value}</div>
+                                <div className="text-xs text-text-muted mt-0.5 leading-tight">{stat.label}</div>
+                            </div>
+                        ))}
+                    </div>
+                </motion.div>
 
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -76,7 +96,7 @@ export default function Hero() {
                     </Link>
                     <Link
                         href="#contact"
-                        className="group flex items-center gap-2 rounded-full border-2 border-border bg-surface px-8 py-4 text-base font-semibold text-foreground transition-all hover:border-primary/50 hover:bg-surface-alt shadow-md hover-lift"
+                        className="group flex items-center gap-2 rounded-full border-2 border-border bg-surface/80 backdrop-blur-sm px-8 py-4 text-base font-semibold text-foreground transition-all hover:border-primary/50 hover:bg-surface shadow-md hover-lift"
                     >
                         Let's Talk
                     </Link>
@@ -92,7 +112,7 @@ export default function Hero() {
                         href="https://github.com/victorbln"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center justify-center w-10 h-10 rounded-full bg-surface-alt border border-border text-text-muted hover:text-foreground hover:border-primary/50 transition-all"
+                        className="flex items-center justify-center w-10 h-10 rounded-full bg-surface/80 backdrop-blur-sm border border-border text-text-muted hover:text-foreground hover:border-primary/50 transition-all"
                         aria-label="GitHub Profile"
                     >
                         <Github className="h-5 w-5" />
@@ -101,7 +121,7 @@ export default function Hero() {
                         href="https://www.linkedin.com/in/victor-balan-a62001192/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center justify-center w-10 h-10 rounded-full bg-surface-alt border border-border text-text-muted hover:text-foreground hover:border-primary/50 transition-all"
+                        className="flex items-center justify-center w-10 h-10 rounded-full bg-surface/80 backdrop-blur-sm border border-border text-text-muted hover:text-foreground hover:border-primary/50 transition-all"
                         aria-label="LinkedIn Profile"
                     >
                         <Linkedin className="h-5 w-5" />

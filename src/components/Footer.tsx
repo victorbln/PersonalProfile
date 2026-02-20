@@ -29,14 +29,14 @@ export default function Footer() {
                     <div>
                         <h3 className="text-lg font-bold text-foreground mb-4">Victor Balan</h3>
                         <p className="text-sm text-text-secondary leading-relaxed">
-                            Software engineer passionate about building scalable systems and mentoring developers.
+                            Backend engineer specialising in distributed systems, cloud-native infrastructure, and iGaming platforms.
                         </p>
                     </div>
 
                     <div>
                         <h3 className="text-lg font-bold text-foreground mb-4">Quick Links</h3>
                         <ul className="space-y-2">
-                            {["About", "Experience", "Projects", "Skills", "Writing", "Contact"].map((item) => (
+                            {["About", "Experience", "Education", "Projects", "Skills", "Writing", "Contact"].map((item) => (
                                 <li key={item}>
                                     <Link
                                         href={`#${item.toLowerCase()}`}

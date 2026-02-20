@@ -14,7 +14,7 @@ export default function Navbar() {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 20);
 
-            const sections = ["about", "experience", "projects", "skills", "writing", "contact"];
+            const sections = ["about", "experience", "education", "projects", "skills", "writing", "contact"];
             const current = sections.find(section => {
                 const element = document.getElementById(section);
                 if (element) {
@@ -33,6 +33,7 @@ export default function Navbar() {
     const navLinks = [
         { href: "#about", label: "About" },
         { href: "#experience", label: "Experience" },
+        { href: "#education", label: "Education" },
         { href: "#projects", label: "Projects" },
         { href: "#skills", label: "Skills" },
         { href: "#writing", label: "Writing" },

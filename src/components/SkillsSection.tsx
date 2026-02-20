@@ -1,22 +1,22 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Code2, Server, Cloud, Database, Zap } from "lucide-react";
+import { Code2, Server, Cloud, Database, Zap, Activity } from "lucide-react";
 import AnimatedBackground from "./AnimatedBackground";
 
 const skillCategories = [
     {
         title: "Languages",
         icon: Code2,
-        skills: ["Java", "TypeScript", "JavaScript", "Bash", "SQL"],
+        skills: ["Java", "TypeScript", "JavaScript", "Python", "SQL", "Bash"],
         color: "text-primary",
         bg: "bg-primary/10",
         border: "border-primary/20",
     },
     {
-        title: "Frameworks",
+        title: "Frameworks & Libraries",
         icon: Server,
-        skills: ["Spring Boot", "Quarkus", "Angular", "NX", "Hibernate", "JPA"],
+        skills: ["Spring Boot", "Spring Security", "Quarkus", "Apache Camel", "Angular", ".NET Core", "Hibernate", "JPA", "PrimeNG"],
         color: "text-secondary",
         bg: "bg-secondary/10",
         border: "border-secondary/20",
@@ -24,7 +24,7 @@ const skillCategories = [
     {
         title: "Cloud & DevOps",
         icon: Cloud,
-        skills: ["AWS", "GCP", "Azure", "Kubernetes", "Docker", "Terraform", "GitLab CI", "Jenkins"],
+        skills: ["AWS", "Azure", "Docker", "Kubernetes", "Terraform", "GitLab CI", "Bamboo", "Maven", "Consul", "Linux"],
         color: "text-accent",
         bg: "bg-accent/10",
         border: "border-accent/20",
@@ -32,10 +32,18 @@ const skillCategories = [
     {
         title: "Databases",
         icon: Database,
-        skills: ["PostgreSQL", "MySQL", "NoSQL", "JDBC", "JAX-RS"],
-        color: "text-orange-600",
-        bg: "bg-orange-50",
-        border: "border-orange-200",
+        skills: ["PostgreSQL", "MongoDB", "Cassandra", "Redis", "MySQL", "JDBC"],
+        color: "text-orange-500",
+        bg: "bg-orange-500/10",
+        border: "border-orange-500/20",
+    },
+    {
+        title: "Observability & QA",
+        icon: Activity,
+        skills: ["Prometheus", "Grafana", "Cypress", "Integration Testing", "API Testing"],
+        color: "text-violet-500",
+        bg: "bg-violet-500/10",
+        border: "border-violet-500/20",
     },
 ];
 
@@ -62,7 +70,7 @@ export default function SkillsSection() {
                     </h2>
                 </motion.div>
 
-                <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+                <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
                     {skillCategories.map((category, index) => (
                         <motion.div
                             key={index}
@@ -84,7 +92,7 @@ export default function SkillsSection() {
                                     <category.icon className="h-6 w-6" />
                                 </motion.div>
 
-                                <h3 className={`text-lg font-bold mb-4 ${category.color}`}>
+                                <h3 className={`text-base font-bold mb-4 ${category.color}`}>
                                     {category.title}
                                 </h3>
 
@@ -98,7 +106,7 @@ export default function SkillsSection() {
                                             transition={{ delay: 0.3 + i * 0.05 }}
                                             className="flex items-center text-text-secondary group-hover:text-foreground transition-colors"
                                         >
-                                            <span className={`mr-2 h-1.5 w-1.5 rounded-full ${category.color.replace('text-', 'bg-')}`} />
+                                            <span className={`mr-2 h-1.5 w-1.5 rounded-full shrink-0 ${category.color.replace('text-', 'bg-')}`} />
                                             <span className="text-sm">{skill}</span>
                                         </motion.li>
                                     ))}

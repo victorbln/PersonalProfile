@@ -1,34 +1,33 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Cloud, Shield, GitMerge, ArrowUpRight, ExternalLink } from "lucide-react";
-import Link from "next/link";
+import { DatabaseZap, Gamepad2, GitMerge, ExternalLink } from "lucide-react";
 import AnimatedBackground from "./AnimatedBackground";
 
 const projects = [
     {
-        title: "CloudStream",
-        description: "A distributed real-time data processing platform capable of handling millions of events per second. Built for high throughput and fault tolerance.",
-        icon: Cloud,
-        tech: ["Java", "Spring Boot", "Kubernetes", "Kafka"],
-        link: "#",
+        title: "Zero-Downtime Database Migration",
+        description: "Designed and implemented a full migration strategy from a NoSQL store to a relational SQL database for a high-load production system processing over 1 million transactions per hour — with zero service interruption.",
+        icon: DatabaseZap,
+        tech: ["Java", "Spring Boot", "PostgreSQL", "MongoDB", "Kubernetes"],
         gradient: "from-blue-500 to-cyan-500",
+        highlight: "1M+ tx/hour · Zero downtime",
     },
     {
-        title: "SecureGate",
-        description: "Identity management microservice framework implementing OAuth2 and OIDC. Designed for seamless integration with legacy systems.",
-        icon: Shield,
-        tech: ["Quarkus", "Keycloak", "Docker", "PostgreSQL"],
-        link: "#",
+        title: "Multi-Platform iGaming Backend",
+        description: "Developed and maintained backend and frontend systems for a major iGaming platform across Web, iOS, Android, and Windows. Delivered new game features, maintained platform capabilities, and supported cross-functional teams.",
+        icon: Gamepad2,
+        tech: ["Java", "TypeScript", "Angular", ".NET Core", "PostgreSQL", "Redis"],
         gradient: "from-primary to-amber-500",
+        highlight: "Web · iOS · Android · Windows",
     },
     {
-        title: "AutoDeploy",
-        description: "Intelligent CI/CD automation tool that optimizes build pipelines and manages infrastructure as code across multi-cloud environments.",
+        title: "Cloud-Native CI/CD Modernization",
+        description: "Led the migration of a project's entire delivery pipeline from legacy on-premise tools to GitLab CI/CD with full infrastructure-as-code via Terraform. Established scalable, reproducible workflows and slashed system load by 70%.",
         icon: GitMerge,
-        tech: ["Go", "Terraform", "GitLab CI", "AWS"],
-        link: "#",
+        tech: ["GitLab CI", "Terraform", "Docker", "Kubernetes", "AWS", "Azure"],
         gradient: "from-secondary to-accent",
+        highlight: "70% load reduction",
     },
 ];
 
@@ -49,13 +48,13 @@ export default function ProjectsSection() {
                 >
                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
                         <ExternalLink className="h-4 w-4" />
-                        <span>Portfolio</span>
+                        <span>Featured Work</span>
                     </div>
                     <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl mb-4">
-                        Featured <span className="text-gradient">Projects</span>
+                        Key <span className="text-gradient">Projects</span>
                     </h2>
                     <p className="text-lg text-text-secondary">
-                        A selection of technical projects demonstrating expertise in distributed systems and cloud infrastructure.
+                        A selection of impactful engineering work spanning distributed systems, platform development, and cloud infrastructure.
                     </p>
                 </motion.div>
 
@@ -73,26 +72,31 @@ export default function ProjectsSection() {
                                 whileHover={{ y: -8 }}
                                 className="h-full flex flex-col rounded-2xl border-2 border-border bg-surface p-8 transition-all shadow-lg hover:shadow-glow"
                             >
-                                <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-10 transition-opacity`}></div>
+                                <div className={`absolute inset-0 rounded-2xl bg-linear-to-br ${project.gradient} opacity-0 group-hover:opacity-10 transition-opacity`}></div>
 
-                                <div className="relative z-10">
+                                <div className="relative z-10 flex flex-col h-full">
                                     <motion.div
                                         whileHover={{ scale: 1.1, rotate: 5 }}
                                         transition={{ type: "spring", stiffness: 300 }}
-                                        className={`mb-6 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br ${project.gradient} text-white shadow-lg`}
+                                        className={`mb-6 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-linear-to-br ${project.gradient} text-white shadow-lg`}
                                     >
                                         <project.icon className="h-7 w-7" />
                                     </motion.div>
 
-                                    <h3 className="text-xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors">
-                                        {project.title}
-                                    </h3>
+                                    <div className="mb-3">
+                                        <span className={`inline-block text-xs font-semibold px-3 py-1 rounded-full bg-linear-to-r ${project.gradient} text-white mb-3`}>
+                                            {project.highlight}
+                                        </span>
+                                        <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+                                            {project.title}
+                                        </h3>
+                                    </div>
 
-                                    <p className="text-text-secondary mb-6 leading-relaxed flex-grow">
+                                    <p className="text-text-secondary mb-6 leading-relaxed grow">
                                         {project.description}
                                     </p>
 
-                                    <div className="flex flex-wrap gap-2 mb-6">
+                                    <div className="flex flex-wrap gap-2">
                                         {project.tech.map((t, i) => (
                                             <span
                                                 key={i}
@@ -102,14 +106,6 @@ export default function ProjectsSection() {
                                             </span>
                                         ))}
                                     </div>
-
-                                    <Link
-                                        href={project.link}
-                                        className="inline-flex items-center text-sm font-semibold text-primary hover:text-primary-hover group/link"
-                                    >
-                                        View Project
-                                        <ArrowUpRight className="ml-1 h-4 w-4 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
-                                    </Link>
                                 </div>
                             </motion.div>
                         </motion.div>

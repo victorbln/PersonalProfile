@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Code2, Heart, Rocket, Users } from "lucide-react";
+import { Code2, Rocket, Users, BookOpen } from "lucide-react";
 import AnimatedBackground from "./AnimatedBackground";
 
 export default function AboutSection() {
@@ -20,7 +20,7 @@ export default function AboutSection() {
                     className="text-center mb-16"
                 >
                     <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl mb-6">
-                        A bit <span className="text-gradient">about me</span>
+                        About <span className="text-gradient">Me</span>
                     </h2>
                 </motion.div>
 
@@ -33,13 +33,28 @@ export default function AboutSection() {
                 >
                     <div className="space-y-6 text-text-secondary text-lg leading-relaxed">
                         <p>
-                            I'm a software engineer based in Suceava, Romania. I joined <span className="text-primary font-medium">ASSIST Software</span> in 2023, where I've been fortunate to work on some really interesting technical challenges.
+                            I'm a Software Engineer based in <span className="text-foreground font-medium">Suceava, Romania</span>, specializing in
+                            backend engineering, cloud-native infrastructure, and distributed systems. I hold two Bachelor's degrees from
+                            <span className="text-foreground font-medium"> Ștefan cel Mare University</span> — one in
+                            <span className="text-primary font-medium"> Computer Science & Engineering</span> and one in
+                            <span className="text-primary font-medium"> Cybersecurity</span>.
                         </p>
                         <p>
-                            One of my proudest achievements was designing and implementing a <span className="text-foreground font-medium">zero-downtime data migration strategy</span> from NoSQL to SQL for a high-load system handling over <span className="text-foreground font-medium">1M+ transactions per hour</span>. It taught me more about distributed systems than any book could.
+                            At <span className="text-primary font-medium">ASSIST Software</span>, I've been a key technical contributor across multiple
+                            client projects spanning <span className="text-foreground font-medium">iGaming & entertainment platforms</span>,
+                            enterprise cloud migrations, and high-load backend systems. I work across the full engineering lifecycle —
+                            from architecture and backend development to DevOps automation and cross-team collaboration.
                         </p>
                         <p>
-                            I also led the <span className="text-foreground font-medium">CI/CD modernization</span> at my company, migrating from on-premise tools to GitLab and defining scalable workflows. Through refactoring and optimization, we achieved a <span className="text-foreground font-medium">70% reduction in system load</span>.
+                            One of my proudest achievements was designing a <span className="text-foreground font-medium">zero-downtime data migration strategy</span> from
+                            NoSQL to SQL for a system handling over <span className="text-foreground font-medium">1M+ transactions per hour</span> —
+                            a challenge that deeply expanded my understanding of distributed systems under production constraints.
+                        </p>
+                        <p>
+                            I also led the <span className="text-foreground font-medium">CI/CD modernization</span> for a major project — migrating
+                            from on-premise tooling to GitLab with full infrastructure-as-code via Terraform — and drove a
+                            <span className="text-foreground font-medium"> 70% reduction in system load</span> through targeted refactoring and
+                            removal of legacy bottlenecks.
                         </p>
                     </div>
                 </motion.div>
@@ -51,13 +66,13 @@ export default function AboutSection() {
                     transition={{ duration: 0.6, delay: 0.4 }}
                     className="mt-12"
                 >
-                    <h3 className="text-xl font-bold text-foreground mb-6">When I'm not coding, I'm probably:</h3>
+                    <h3 className="text-xl font-bold text-foreground mb-6">Beyond the code:</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {[
-                            { icon: Code2, text: "Reading about system architecture and design patterns" },
-                            { icon: Users, text: "Mentoring junior developers" },
-                            { icon: Rocket, text: "Trying to explain Kubernetes to my non-tech friends" },
-                            { icon: Heart, text: "Writing about what I'm learning" },
+                            { icon: Code2, text: "Deep-diving into system architecture, design patterns, and distributed systems theory" },
+                            { icon: Users, text: "Mentoring junior engineers and contributing to team knowledge sharing" },
+                            { icon: Rocket, text: "Volunteering with FIRESC Students Association — co-organized the first and second annual hackathon" },
+                            { icon: BookOpen, text: "Writing technical articles on Medium about Quarkus, Spring, and backend engineering" },
                         ].map((item, index) => (
                             <motion.div
                                 key={index}
@@ -84,13 +99,13 @@ export default function AboutSection() {
                     className="mt-12 text-center"
                 >
                     <p className="text-lg text-text-secondary mb-6">
-                        I'm always up for chatting about backend engineering, DevOps, or career growth.
+                        Always open to discussing backend engineering, cloud architecture, or career growth.
                     </p>
                     <a
                         href="#contact"
                         className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-white font-semibold hover:bg-primary-hover transition-all shadow-lg shadow-primary/25 hover-scale"
                     >
-                        Feel free to reach out
+                        Get in touch
                     </a>
                 </motion.div>
             </div>
