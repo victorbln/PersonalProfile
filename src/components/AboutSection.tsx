@@ -33,17 +33,15 @@ export default function AboutSection() {
                 >
                     <div className="space-y-6 text-text-secondary text-lg leading-relaxed">
                         <p>
-                            I'm a Software Engineer based in <span className="text-foreground font-medium">Suceava, Romania</span>, specializing in
+                            I'm a <span className="text-foreground font-medium">Backend Engineer & Deputy of the Java Technologies Department</span> based in <span className="text-foreground font-medium">Suceava, Romania</span>, specializing in
                             backend engineering, cloud-native infrastructure, and distributed systems. I hold two Bachelor's degrees from
                             <span className="text-foreground font-medium"> Ștefan cel Mare University</span> — one in
                             <span className="text-primary font-medium"> Computer Science & Engineering</span> and one in
                             <span className="text-primary font-medium"> Cybersecurity</span>.
                         </p>
                         <p>
-                            At <span className="text-primary font-medium">ASSIST Software</span>, I've been a key technical contributor across multiple
-                            client projects spanning <span className="text-foreground font-medium">iGaming & entertainment platforms</span>,
-                            enterprise cloud migrations, and high-load backend systems. I work across the full engineering lifecycle —
-                            from architecture and backend development to DevOps automation and cross-team collaboration.
+                            At <span className="text-primary font-medium">ASSIST Software</span>, I've grown from key technical contributor to leading the Java Technologies Department as Deputy. I've worked across multiple client projects spanning <span className="text-foreground font-medium">iGaming & entertainment platforms</span>,
+                            enterprise cloud migrations, and high-load backend systems — from architecture and backend development to DevOps automation, cross-team collaboration, and now engineering leadership.
                         </p>
                         <p>
                             One of my proudest achievements was designing a <span className="text-foreground font-medium">zero-downtime data migration strategy</span> from

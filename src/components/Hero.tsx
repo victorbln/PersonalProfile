@@ -46,7 +46,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-2xl sm:text-3xl font-semibold text-foreground mb-6"
         >
-          Software Engineer — Backend, Cloud & Distributed Systems
+          Backend Engineer · Deputy, Java Technologies
         </motion.h2>
 
         <motion.p
@@ -55,40 +55,41 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="mx-auto max-w-2xl text-lg text-text-secondary leading-relaxed mb-10"
         >
-          3+ years engineering production-grade systems at{" "}
-          <span className="text-primary font-medium">ASSIST Software</span> —
-          from high-throughput iGaming backends to zero-downtime database
-          migrations handling{" "}
+          3+ years building production-grade systems at{" "}
+          <span className="text-primary font-medium">ASSIST Software</span>.
+          Recently promoted to{" "}
+          <span className="text-foreground font-medium">
+            Deputy of the Java Technologies Department
+          </span>{" "}
+          — leading engineering standards while delivering high-throughput
+          backends and zero-downtime migrations handling{" "}
           <span className="text-foreground font-medium">
             1M+ transactions/hour
           </span>
-          . Passionate about clean architecture, cloud-native infrastructure,
-          and scalable system design.
+          .
         </motion.p>
 
-        {/* Impact metrics */}
+        {/* Impact metrics — standalone numbers, no container card */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="mx-auto max-w-lg mb-10"
+          className="flex items-center justify-center gap-12 sm:gap-20 mb-10"
         >
-          <div className="grid grid-cols-3 divide-x divide-border rounded-2xl border border-border bg-surface/60 backdrop-blur-sm shadow-md overflow-hidden">
-            {[
-              { value: "3+", label: "Years experience" },
-              { value: "1M+", label: "Transactions / hr" },
-              { value: "70%", label: "Load reduced" },
-            ].map((stat, i) => (
-              <div key={i} className="px-4 py-4 text-center">
-                <div className="text-2xl font-bold text-primary">
-                  {stat.value}
-                </div>
-                <div className="text-xs text-text-muted mt-0.5 leading-tight">
-                  {stat.label}
-                </div>
+          {[
+            { value: "3+", label: "Years experience" },
+            { value: "1M+", label: "Transactions / hr" },
+            { value: "70%", label: "Load reduced" },
+          ].map((stat, i) => (
+            <div key={i} className="text-center">
+              <div className="text-3xl font-black text-primary tracking-tight leading-none">
+                {stat.value}
               </div>
-            ))}
-          </div>
+              <div className="text-xs text-text-muted mt-1.5 uppercase tracking-widest font-medium">
+                {stat.label}
+              </div>
+            </div>
+          ))}
         </motion.div>
 
         <motion.div
@@ -99,14 +100,14 @@ export default function Hero() {
         >
           <Link
             href="#experience"
-            className="group inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-base font-semibold text-white transition-all hover:bg-primary-hover shadow-lg shadow-primary/30 hover:shadow-primary/50 hover-scale"
+            className="group inline-flex items-center gap-2 rounded-xl bg-primary px-8 py-3.5 text-base font-semibold text-white transition-all hover:bg-primary-hover shadow-ambient hover-scale"
           >
             View My Work
             <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
           </Link>
           <Link
             href="#contact"
-            className="group flex items-center gap-2 rounded-full border-2 border-border bg-surface/80 backdrop-blur-sm px-8 py-4 text-base font-semibold text-foreground transition-all hover:border-primary/50 hover:bg-surface shadow-md hover-lift"
+            className="group flex items-center gap-2 rounded-xl border border-border px-8 py-3.5 text-base font-semibold text-foreground transition-all hover:border-primary/50 hover:text-primary"
           >
             Let's Talk
           </Link>
@@ -122,19 +123,19 @@ export default function Hero() {
             href="https://github.com/victorbln"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center w-10 h-10 rounded-full bg-surface/80 backdrop-blur-sm border border-border text-text-muted hover:text-foreground hover:border-primary/50 transition-all"
+            className="text-text-muted hover:text-foreground transition-colors"
             aria-label="GitHub Profile"
           >
-            <Github className="h-5 w-5" />
+            <Github className="h-5 w-5" strokeWidth={1.5} />
           </Link>
           <Link
             href="https://www.linkedin.com/in/balan-victor/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center w-10 h-10 rounded-full bg-surface/80 backdrop-blur-sm border border-border text-text-muted hover:text-foreground hover:border-primary/50 transition-all"
+            className="text-text-muted hover:text-foreground transition-colors"
             aria-label="LinkedIn Profile"
           >
-            <Linkedin className="h-5 w-5" />
+            <Linkedin className="h-5 w-5" strokeWidth={1.5} />
           </Link>
         </motion.div>
       </motion.div>

@@ -11,9 +11,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Victor Balan | Software Engineer — Backend, Cloud & Distributed Systems",
+  title: "Victor Balan | Backend Engineer & Deputy, Java Technologies",
   description:
-    "Software Engineer at ASSIST Software with 3+ years designing high-load distributed systems, cloud-native infrastructure, and iGaming backends. Specialising in Java, Spring Boot, Kubernetes, and Terraform.",
+    "Backend Engineer and Deputy of the Java Technologies Department at ASSIST Software. 3+ years designing high-load distributed systems, cloud-native infrastructure, and iGaming backends. Specialising in Java, Spring Boot, Kubernetes, and Terraform.",
   keywords: [
     "Victor Balan", "Software Engineer", "Backend Engineer",
     "Java", "Spring Boot", "Kubernetes", "Distributed Systems",
