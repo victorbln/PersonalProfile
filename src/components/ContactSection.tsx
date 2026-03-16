@@ -1,143 +1,218 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, Phone, Github, Linkedin, Copy, Check } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
+const CHANNELS = [
+    {
+        key: "email",
+        label: "victorbalan9@gmail.com",
+        command: "mail --to victorbalan9@gmail.com",
+        href: "mailto:victorbalan9@gmail.com",
+        copyValue: "victorbalan9@gmail.com",
+        type: "copy",
+    },
+    {
+        key: "phone",
+        label: "(+40) 787722414",
+        command: "call +40787722414",
+        href: "tel:+40787722414",
+        type: "link",
+    },
+    {
+        key: "github",
+        label: "github.com/victorbln",
+        command: "open --browser github.com/victorbln",
+        href: "https://github.com/victorbln",
+        type: "link",
+        external: true,
+    },
+    {
+        key: "linkedin",
+        label: "linkedin.com/in/balan-victor",
+        command: "open --browser linkedin.com/in/balan-victor",
+        href: "https://www.linkedin.com/in/balan-victor/",
+        type: "link",
+        external: true,
+    },
+];
+
 export default function ContactSection() {
-  const [emailCopied, setEmailCopied] = useState(false);
+    const [copied, setCopied] = useState(false);
+    const [selected, setSelected] = useState<string | null>(null);
 
-  const copyEmail = () => {
-    navigator.clipboard.writeText("victorbalan9@gmail.com");
-    setEmailCopied(true);
-    setTimeout(() => setEmailCopied(false), 2000);
-  };
+    const handleEmailCopy = () => {
+        navigator.clipboard.writeText("victorbalan9@gmail.com");
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+    };
 
-  return (
-    <section
-      id="contact"
-      className="py-24 sm:py-32 relative overflow-hidden bg-surface-alt"
-    >
-      <motion.div
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3],
-        }}
-        transition={{ duration: 8, repeat: Infinity }}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 blur-[120px] rounded-full pointer-events-none"
-      />
-      <div className="absolute top-20 right-20 w-64 h-64 bg-secondary/10 blur-[100px] rounded-full animate-float-delayed"></div>
-      <div className="absolute bottom-20 left-20 w-64 h-64 bg-accent/10 blur-[100px] rounded-full animate-float"></div>
+    return (
+        <section id="contact" className="py-24 sm:py-32 relative">
+            <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
 
-      <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
-            <Mail className="h-4 w-4" />
-            <span>Let's Connect</span>
-          </div>
-          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl mb-4">
-            Get in <span className="text-gradient">Touch</span>
-          </h2>
-          <p className="text-lg text-text-secondary max-w-xl mx-auto">
-            I'm currently open to new opportunities. Whether you have a question
-            or just want to say hi, I'll try my best to get back to you!
-          </p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="rounded-2xl border-2 border-border bg-surface p-8 shadow-glow"
-        >
-          <div className="space-y-6">
-            <motion.div
-              whileHover={{ x: 5 }}
-              className="group flex items-center justify-between p-4 rounded-xl bg-surface-alt hover:bg-primary/5 border border-border hover:border-primary/30 transition-all"
-            >
-              <a
-                href="mailto:victorbalan9@gmail.com"
-                className="flex items-center gap-3 flex-grow"
-              >
-                <div className="p-2 rounded-full bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
-                  <Mail className="h-5 w-5" />
-                </div>
-                <span className="text-foreground font-medium">
-                  victorbalan9@gmail.com
-                </span>
-              </a>
-              <button
-                onClick={copyEmail}
-                className="p-2 rounded-lg hover:bg-surface text-text-muted hover:text-primary transition-all"
-                title="Copy to clipboard"
-              >
-                {emailCopied ? (
-                  <Check className="h-4 w-4 text-accent" />
-                ) : (
-                  <Copy className="h-4 w-4" />
-                )}
-              </button>
-            </motion.div>
-
-            <motion.a
-              whileHover={{ x: 5 }}
-              href="tel:+40787722414"
-              className="group flex items-center gap-3 p-4 rounded-xl bg-surface-alt hover:bg-primary/5 border border-border hover:border-primary/30 transition-all"
-            >
-              <div className="p-2 rounded-full bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
-                <Phone className="h-5 w-5" />
-              </div>
-              <span className="text-foreground font-medium">
-                (+40) 787722414
-              </span>
-            </motion.a>
-          </div>
-
-          <div className="mt-10 pt-8 border-t border-border">
-            <p className="text-center text-sm text-text-secondary mb-6">
-              Or find me on social media
-            </p>
-            <div className="flex justify-center gap-4">
-              <motion.div
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Link
-                  href="https://github.com/victorbln"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center w-12 h-12 rounded-full bg-surface-alt border border-border text-text-muted hover:text-white hover:bg-[#333] hover:border-[#333] transition-all shadow-sm hover:shadow-lg"
-                  aria-label="GitHub Profile"
+                {/* Section header */}
+                <motion.div
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                    className="mb-12"
                 >
-                  <Github className="h-5 w-5" />
-                </Link>
-              </motion.div>
-              <motion.div
-                whileHover={{ scale: 1.1, rotate: -5 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Link
-                  href="https://www.linkedin.com/in/balan-victor/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center w-12 h-12 rounded-full bg-surface-alt border border-border text-text-muted hover:text-white hover:bg-[#0077b5] hover:border-[#0077b5] transition-all shadow-sm hover:shadow-lg"
-                  aria-label="LinkedIn Profile"
+                    <div className="text-text-muted text-xs font-mono mb-2 uppercase tracking-widest">// section 07</div>
+                    <h2
+                        className="phosphor-glow-strong"
+                        style={{
+                            fontFamily: "var(--font-vt323), monospace",
+                            fontSize: "clamp(2.5rem, 6vw, 4rem)",
+                            color: "var(--primary)",
+                            letterSpacing: "0.06em",
+                        }}
+                    >
+                        CONTACT.SH
+                    </h2>
+                    <div className="term-divider mt-3" />
+                </motion.div>
+
+                {/* SSH window */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
                 >
-                  <Linkedin className="h-5 w-5" />
-                </Link>
-              </motion.div>
+                    <div className="terminal-window">
+                        <div className="terminal-titlebar">
+                            <span className="terminal-dot" style={{ background: "#ff5f57" }} />
+                            <span className="terminal-dot" style={{ background: "#ffbd2e" }} />
+                            <span className="terminal-dot" style={{ background: "#28c840" }} />
+                            <span className="ml-3">ssh victor@balan.dev</span>
+                        </div>
+
+                        <div className="p-5 sm:p-8 font-mono text-base space-y-5">
+
+                            {/* Connection log */}
+                            <div className="text-sm space-y-0.5">
+                                <div className="text-text-muted">Connecting to victor@balan.dev...</div>
+                                <div className="text-accent accent-glow">Connection established.</div>
+                                <div className="text-text-muted">Authenticated via portfolio handshake.</div>
+                            </div>
+
+                            <div className="term-divider" />
+
+                            {/* Header */}
+                            <div>
+                                <div
+                                    className="phosphor-glow mb-1"
+                                    style={{
+                                        fontFamily: "var(--font-vt323), monospace",
+                                        fontSize: "1.4rem",
+                                        color: "var(--primary)",
+                                    }}
+                                >
+                                    AVAILABLE CHANNELS
+                                </div>
+                                <p className="text-text-muted text-sm">
+                                    Open to new opportunities. Select a channel to reach out:
+                                </p>
+                            </div>
+
+                            {/* Channel list */}
+                            <div className="space-y-2">
+                                {CHANNELS.map((ch, i) => (
+                                    <motion.div
+                                        key={ch.key}
+                                        initial={{ opacity: 0, x: -10 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: 0.15 + i * 0.07 }}
+                                        className="relative"
+                                    >
+                                        <div
+                                            className="flex items-center gap-3 p-3 rounded-sm cursor-pointer transition-all"
+                                            onClick={() => {
+                                                if (ch.key === "email") {
+                                                    handleEmailCopy();
+                                                }
+                                                setSelected(ch.key);
+                                            }}
+                                            style={{
+                                                background: selected === ch.key ? "oklch(0.72 0.185 65 / 0.06)" : "transparent",
+                                                border: "1px solid",
+                                                borderColor: selected === ch.key ? "var(--border)" : "transparent",
+                                            }}
+                                        >
+                                            {/* Index */}
+                                            <span
+                                                className="text-sm shrink-0 w-6 text-center"
+                                                style={{
+                                                    color: selected === ch.key ? "var(--primary)" : "var(--text-muted)",
+                                                    textShadow: selected === ch.key ? "0 0 6px var(--phosphor-glow)" : "none",
+                                                }}
+                                            >
+                                                [{i + 1}]
+                                            </span>
+
+                                            {/* Command */}
+                                            <div className="flex-1 min-w-0">
+                                                {ch.type === "link" ? (
+                                                    <Link
+                                                        href={ch.href}
+                                                        target={ch.external ? "_blank" : undefined}
+                                                        rel={ch.external ? "noopener noreferrer" : undefined}
+                                                        className="text-sm text-text-secondary hover:text-primary transition-colors truncate block"
+                                                        onClick={e => e.stopPropagation()}
+                                                    >
+                                                        <span className="text-text-muted">$ </span>
+                                                        {ch.command}
+                                                    </Link>
+                                                ) : (
+                                                    <div className="text-sm text-text-secondary truncate">
+                                                        <span className="text-text-muted">$ </span>
+                                                        {ch.command}
+                                                    </div>
+                                                )}
+                                                <div className="text-sm text-primary phosphor-glow mt-0.5">{ch.label}</div>
+                                            </div>
+
+                                            {/* Copy feedback */}
+                                            {ch.key === "email" && (
+                                                <button
+                                                    onClick={e => { e.stopPropagation(); handleEmailCopy(); }}
+                                                    className="btn-terminal px-2.5 py-1 text-sm rounded-sm text-text-muted hover:text-primary shrink-0"
+                                                >
+                                                    {copied ? (
+                                                        <span className="text-accent accent-glow">copied!</span>
+                                                    ) : (
+                                                        <span>copy</span>
+                                                    )}
+                                                </button>
+                                            )}
+                                        </div>
+                                    </motion.div>
+                                ))}
+                            </div>
+
+                            <div className="term-divider" />
+
+                            {/* Input prompt */}
+                            <div>
+                                <div className="text-sm text-text-muted mb-3">
+                                    Enter channel number to connect:
+                                </div>
+                                <div className="flex items-center gap-2 text-sm panel-inset rounded-sm p-3">
+                                    <span className="text-accent accent-glow shrink-0">victor@balan.dev:~$</span>
+                                    <span className="text-text-secondary">connect</span>
+                                    <span className="cursor-blink" />
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </motion.div>
+
             </div>
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  );
+        </section>
+    );
 }

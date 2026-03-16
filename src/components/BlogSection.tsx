@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Calendar, Clock, Tag, ArrowRight, BookOpen, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import blogsData from "@/data/blogs.json";
 
@@ -23,129 +22,200 @@ export default function BlogSection() {
 
     return (
         <section id="writing" className="py-24 sm:py-32 relative">
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+
+                {/* Section header */}
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 16 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="text-center max-w-3xl mx-auto mb-16"
+                    transition={{ duration: 0.5 }}
+                    className="mb-12"
                 >
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6 border border-primary/20">
-                        <BookOpen className="h-4 w-4" />
-                        <span>Writing</span>
-                    </div>
-                    <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl mb-4">
-                        Articles <span className="text-gradient">&amp; Thoughts</span>
+                    <div className="text-text-muted text-xs font-mono mb-2 uppercase tracking-widest">// section 06</div>
+                    <h2
+                        className="phosphor-glow-strong"
+                        style={{
+                            fontFamily: "var(--font-vt323), monospace",
+                            fontSize: "clamp(2.5rem, 6vw, 4rem)",
+                            color: "var(--primary)",
+                            letterSpacing: "0.06em",
+                        }}
+                    >
+                        WRITING.LOG
                     </h2>
-                    <p className="text-lg text-text-secondary">
-                        Writing about backend engineering, cloud infrastructure, and software craft.
-                        Published on{" "}
-                        <Link
-                            href="https://medium.com/@victorbalan9"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-primary hover:underline font-medium"
-                        >
-                            Medium
-                        </Link>.
-                    </p>
+                    <div className="term-divider mt-3" />
                 </motion.div>
 
-                {/* Featured article */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.1 }}
-                    className="mx-auto max-w-3xl"
-                >
-                    {published.map((blog) => (
+                {/* /etc/motd — message of the day */}
+                <div className="terminal-window mb-6">
+                    <div className="terminal-titlebar">
+                        <span className="terminal-dot" style={{ background: "#ff5f57" }} />
+                        <span className="terminal-dot" style={{ background: "#ffbd2e" }} />
+                        <span className="terminal-dot" style={{ background: "#28c840" }} />
+                        <span className="ml-3">cat /etc/motd</span>
+                    </div>
+
+                    <div className="p-5 sm:p-8 font-mono">
+                        <div className="text-text-muted text-xs mb-4 uppercase tracking-widest">— message of the day —</div>
+                        <p className="text-text-secondary text-sm leading-relaxed">
+                            Writing about backend engineering, cloud infrastructure, and software craft.
+                            Published on{" "}
+                            <Link
+                                href="https://medium.com/@victorbalan9"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-primary phosphor-glow hover:text-primary-hover transition-colors"
+                            >
+                                medium.com/@victorbalan9
+                            </Link>.
+                        </p>
+                    </div>
+                </div>
+
+                {/* Articles */}
+                {published.map((blog, index) => (
+                    <motion.div
+                        key={blog.id}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                        className="mb-4"
+                    >
                         <Link
-                            key={blog.id}
                             href={blog.link}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="group block"
                         >
-                            <div className="rounded-2xl border border-border bg-surface/80 backdrop-blur-sm p-8 hover:border-primary/30 hover:shadow-glow transition-all shadow-md relative overflow-hidden">
-                                {/* Top accent bar */}
-                                <div className="absolute top-0 left-0 right-0 h-1 rounded-t-2xl bg-linear-to-r from-primary via-secondary to-accent" />
-
-                                {/* Header row */}
-                                <div className="flex items-center justify-between mb-6">
-                                    <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
-                                        {blog.category}
-                                    </span>
-                                    <span className="inline-flex items-center gap-1 text-xs text-accent font-semibold">
-                                        <ExternalLink className="h-3 w-3" />
-                                        Published on Medium
+                            <div className="terminal-window scan-hover transition-all"
+                                style={{
+                                    borderColor: "oklch(0.32 0.026 65 / 0.42)",
+                                }}
+                            >
+                                <div className="terminal-titlebar"
+                                    style={{
+                                        transition: "background 120ms linear",
+                                    }}
+                                >
+                                    <span className="terminal-dot" style={{ background: "#ff5f57" }} />
+                                    <span className="terminal-dot" style={{ background: "#ffbd2e" }} />
+                                    <span className="terminal-dot" style={{ background: "#28c840" }} />
+                                    <span className="ml-3 flex-1 truncate">{blog.id}.md</span>
+                                    <span
+                                        className="text-xs px-2 py-0.5 rounded-sm"
+                                        style={{
+                                            color: "var(--accent)",
+                                            border: "1px solid oklch(0.70 0.220 145 / 0.35)",
+                                            background: "oklch(0.70 0.220 145 / 0.08)",
+                                            fontSize: "0.62rem",
+                                            letterSpacing: "0.08em",
+                                        }}
+                                    >
+                                        PUBLISHED · MEDIUM
                                     </span>
                                 </div>
 
-                                <h3 className="text-xl font-bold text-foreground mb-4 leading-snug group-hover:text-primary transition-colors">
-                                    {blog.title}
-                                </h3>
-
-                                <p className="text-text-secondary mb-6 leading-relaxed">
-                                    {blog.excerpt}
-                                </p>
-
-                                {/* Tags */}
-                                <div className="flex flex-wrap gap-2 mb-6">
-                                    {blog.tags.map((tag, i) => (
+                                <div className="p-5 sm:p-8 font-mono">
+                                    {/* Meta row */}
+                                    <div className="flex flex-wrap items-center gap-3 mb-4 text-sm text-text-muted">
                                         <span
-                                            key={i}
-                                            className="inline-flex items-center gap-1 text-xs text-text-muted bg-surface-alt px-2.5 py-1 rounded-md border border-border"
+                                            className="px-2 py-0.5 rounded-sm"
+                                            style={{
+                                                color: "var(--primary)",
+                                                border: "1px solid var(--border)",
+                                                background: "oklch(0.72 0.185 65 / 0.08)",
+                                            }}
                                         >
-                                            <Tag className="h-2.5 w-2.5" />
-                                            {tag}
+                                            {blog.category}
                                         </span>
-                                    ))}
-                                </div>
-
-                                {/* Footer meta */}
-                                <div className="flex items-center justify-between text-xs text-text-muted pt-4 border-t border-border">
-                                    <div className="flex items-center gap-1">
-                                        <Calendar className="h-3 w-3" />
-                                        {new Date(blog.date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
-                                    </div>
-                                    <div className="flex items-center gap-4">
-                                        <div className="flex items-center gap-1">
-                                            <Clock className="h-3 w-3" />
-                                            {blog.readTime}
-                                        </div>
-                                        <span className="inline-flex items-center gap-1 text-primary font-medium text-xs group-hover:gap-2 transition-all">
-                                            Read article <ArrowRight className="h-3 w-3" />
+                                        <span>
+                                            {new Date(blog.date).toLocaleDateString("en-US", {
+                                                month: "long", day: "numeric", year: "numeric"
+                                            })}
                                         </span>
+                                        <span>{blog.readTime}</span>
+                                    </div>
+
+                                    {/* Title */}
+                                    <div
+                                        className="mb-3 group-hover:phosphor-glow transition-all"
+                                        style={{
+                                            fontFamily: "var(--font-vt323), monospace",
+                                            fontSize: "clamp(1.4rem, 3vw, 2rem)",
+                                            color: "var(--primary)",
+                                            letterSpacing: "0.04em",
+                                            textShadow: undefined,
+                                        }}
+                                    >
+                                        {blog.title.toUpperCase()}
+                                    </div>
+
+                                    {/* Excerpt */}
+                                    <p className="text-text-secondary text-sm sm:text-base leading-relaxed mb-5">
+                                        {blog.excerpt}
+                                    </p>
+
+                                    {/* Tags */}
+                                    <div className="flex flex-wrap gap-2 mb-5">
+                                        {blog.tags.map((tag, i) => (
+                                            <span
+                                                key={i}
+                                                className="text-sm font-mono px-2 py-0.5 text-text-muted rounded-sm"
+                                                style={{
+                                                    border: "1px solid var(--border)",
+                                                    background: "var(--surface-alt)",
+                                                }}
+                                            >
+                                                #{tag.toLowerCase()}
+                                            </span>
+                                        ))}
+                                    </div>
+
+                                    {/* Read link */}
+                                    <div className="flex items-center gap-2 text-sm text-primary phosphor-glow">
+                                        <span className="text-accent accent-glow">$</span>
+                                        <span className="group-hover:underline">open --article</span>
+                                        <span className="group-hover:translate-x-1 transition-transform">→</span>
                                     </div>
                                 </div>
-
-                                <div className="absolute inset-0 rounded-2xl bg-linear-to-br from-primary/3 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
                             </div>
                         </Link>
-                    ))}
+                    </motion.div>
+                ))}
+
+                {/* More coming CTA */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    className="mt-8"
+                >
+                    <div
+                        className="p-5 sm:p-6 font-mono text-sm text-text-muted"
+                        style={{
+                            border: "1px dashed oklch(0.72 0.185 65 / 0.20)",
+                            borderRadius: "3px",
+                        }}
+                    >
+                        <div className="flex items-center gap-2 mb-3">
+                            <span className="text-text-muted">INFO:</span>
+                            <span>More articles on backend engineering and distributed systems — coming soon.</span>
+                        </div>
+                        <Link
+                            href="https://medium.com/@victorbalan9"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn-primary inline-flex items-center gap-2 px-5 py-2.5 rounded-sm"
+                        >
+                            <span className="text-accent">$</span>
+                            <span>follow --medium @victorbalan9</span>
+                        </Link>
+                    </div>
                 </motion.div>
 
-                {/* CTA */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.3 }}
-                    className="text-center mt-12"
-                >
-                    <p className="text-text-secondary mb-6">More articles on backend engineering and distributed systems coming soon.</p>
-                    <Link
-                        href="https://medium.com/@victorbalan9"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-primary text-white font-semibold hover:bg-primary-hover transition-all shadow-lg shadow-primary/25 hover-scale"
-                    >
-                        Follow on Medium
-                        <ArrowRight className="h-5 w-5" />
-                    </Link>
-                </motion.div>
             </div>
         </section>
     );

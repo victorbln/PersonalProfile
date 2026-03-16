@@ -2,151 +2,242 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, Github, Linkedin, ChevronDown } from "lucide-react";
+
+const BOOT_LINES = [
+    { delay: 0.1,  text: "VICTOR-OS v3.0.0 — Backend Engineering Terminal",         type: "header"  },
+    { delay: 0.25, text: "Copyright (c) 2026 Victor Balan. All rights reserved.",    type: "header"  },
+    { delay: 0.4,  text: "",                                                           type: "blank"   },
+    { delay: 0.6,  text: "Mounting distributed-systems kernel............",           type: "loading" },
+    { delay: 0.85, text: "Loading java-technologies-dept module..........",           type: "loading" },
+    { delay: 1.1,  text: "Initializing production-grade backend suite....",           type: "loading" },
+    { delay: 1.3,  text: "Linking igaming-platform-client.................",           type: "loading" },
+    { delay: 1.55, text: "",                                                           type: "blank"   },
+    { delay: 1.7,  text: "Boot complete. Welcome, engineer.",                         type: "success" },
+];
+
+const STATS = [
+    { value: "3+",   label: "yrs-experience"  },
+    { value: "1M+",  label: "tx/hr"           },
+    { value: "70%",  label: "load-reduction"  },
+];
 
 export default function Hero() {
-  const { scrollY } = useScroll();
-  const y1 = useTransform(scrollY, [0, 500], [0, 120]);
-  const y2 = useTransform(scrollY, [0, 500], [0, -120]);
-  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+    const { scrollY } = useScroll();
+    const opacity    = useTransform(scrollY, [0, 380], [1, 0]);
+    const translateY = useTransform(scrollY, [0, 380], [0, -40]);
 
-  return (
-    <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 pt-20 sm:px-6 lg:px-8">
-      {/* Hero-specific soft glows on top of the global orbs */}
-      <motion.div
-        style={{ y: y1 }}
-        className="pointer-events-none absolute left-1/4 top-1/3 h-80 w-80 rounded-full bg-primary/10 blur-[120px]"
-      />
-      <motion.div
-        style={{ y: y2 }}
-        className="pointer-events-none absolute right-1/4 bottom-1/3 h-80 w-80 rounded-full bg-secondary/10 blur-[120px]"
-      />
+    return (
+        <section className="relative min-h-screen flex flex-col justify-center px-4 sm:px-6 lg:px-8 pt-16 overflow-hidden">
 
-      <motion.div
-        style={{ opacity }}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="relative z-10 max-w-4xl text-center"
-      >
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="mb-6"
-        >
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-foreground mb-4">
-            Hi, I'm <span className="text-gradient">Victor Balan</span>
-          </h1>
-        </motion.div>
+            <motion.div style={{ opacity, y: translateY }} className="relative z-10 max-w-4xl mx-auto w-full">
 
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-2xl sm:text-3xl font-semibold text-foreground mb-6"
-        >
-          Backend Engineer · Deputy, Java Technologies
-        </motion.h2>
+                {/* ── Terminal window ─────────────────────────────────── */}
+                <div className="terminal-window">
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="mx-auto max-w-2xl text-lg text-text-secondary leading-relaxed mb-10"
-        >
-          3+ years building production-grade systems at{" "}
-          <span className="text-primary font-medium">ASSIST Software</span>.
-          Recently promoted to{" "}
-          <span className="text-foreground font-medium">
-            Deputy of the Java Technologies Department
-          </span>{" "}
-          — leading engineering standards while delivering high-throughput
-          backends and zero-downtime migrations handling{" "}
-          <span className="text-foreground font-medium">
-            1M+ transactions/hour
-          </span>
-          .
-        </motion.p>
+                    {/* Titlebar */}
+                    <div className="terminal-titlebar">
+                        <span className="terminal-dot" style={{ background: "#ff5f57" }} />
+                        <span className="terminal-dot" style={{ background: "#ffbd2e" }} />
+                        <span className="terminal-dot" style={{ background: "#28c840" }} />
+                        <span className="ml-3 flex-1">victor@workstation — bash — 120×40</span>
+                        <span className="text-text-muted" style={{ fontSize: "0.65rem" }}>PHOSPHOR-OS</span>
+                    </div>
 
-        {/* Impact metrics — standalone numbers, no container card */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="flex items-center justify-center gap-12 sm:gap-20 mb-10"
-        >
-          {[
-            { value: "3+", label: "Years experience" },
-            { value: "1M+", label: "Transactions / hr" },
-            { value: "70%", label: "Load reduced" },
-          ].map((stat, i) => (
-            <div key={i} className="text-center">
-              <div className="text-3xl font-black text-primary tracking-tight leading-none">
-                {stat.value}
-              </div>
-              <div className="text-xs text-text-muted mt-1.5 uppercase tracking-widest font-medium">
-                {stat.label}
-              </div>
-            </div>
-          ))}
-        </motion.div>
+                    {/* Terminal body */}
+                    <div className="p-5 sm:p-8 leading-relaxed space-y-0.5 panel-inset" style={{ minHeight: "480px" }}>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="flex flex-wrap items-center justify-center gap-4 mb-8"
-        >
-          <Link
-            href="#experience"
-            className="group inline-flex items-center gap-2 rounded-xl bg-primary px-8 py-3.5 text-base font-semibold text-white transition-all hover:bg-primary-hover shadow-ambient hover-scale"
-          >
-            View My Work
-            <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-          </Link>
-          <Link
-            href="#contact"
-            className="group flex items-center gap-2 rounded-xl border border-border px-8 py-3.5 text-base font-semibold text-foreground transition-all hover:border-primary/50 hover:text-primary"
-          >
-            Let's Talk
-          </Link>
-        </motion.div>
+                        {/* Boot sequence */}
+                        {BOOT_LINES.map((line, i) => (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: line.delay, duration: 0.05 }}
+                            >
+                                {line.type === "blank" ? (
+                                    <div className="h-3" />
+                                ) : line.type === "header" ? (
+                                    <div className="text-text-muted font-mono text-sm">{line.text}</div>
+                                ) : line.type === "loading" ? (
+                                    <div className="text-text-secondary font-mono text-sm flex items-center gap-2">
+                                        <span>{line.text}</span>
+                                        <motion.span
+                                            initial={{ opacity: 0 }}
+                                            animate={{ opacity: 1 }}
+                                            transition={{ delay: line.delay + 0.18, duration: 0.05 }}
+                                            className="text-accent accent-glow font-bold"
+                                        >
+                                            [OK]
+                                        </motion.span>
+                                    </div>
+                                ) : (
+                                    <div className="text-accent accent-glow font-mono text-sm">{line.text}</div>
+                                )}
+                            </motion.div>
+                        ))}
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="flex items-center justify-center gap-4"
-        >
-          <Link
-            href="https://github.com/victorbln"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-text-muted hover:text-foreground transition-colors"
-            aria-label="GitHub Profile"
-          >
-            <Github className="h-5 w-5" strokeWidth={1.5} />
-          </Link>
-          <Link
-            href="https://www.linkedin.com/in/balan-victor/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-text-muted hover:text-foreground transition-colors"
-            aria-label="LinkedIn Profile"
-          >
-            <Linkedin className="h-5 w-5" strokeWidth={1.5} />
-          </Link>
-        </motion.div>
-      </motion.div>
+                        {/* whoami */}
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 2.0 }}
+                            className="pt-4"
+                        >
+                            <div className="flex items-center gap-2 text-sm font-mono mb-2">
+                                <span className="text-accent accent-glow">victor@workstation</span>
+                                <span className="text-text-muted">:~$</span>
+                                <span className="text-text-secondary">whoami</span>
+                            </div>
 
-      <motion.div
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2"
-      >
-        <ChevronDown className="h-6 w-6 text-text-muted" />
-      </motion.div>
-    </section>
-  );
+                            <div
+                                className="phosphor-glow-strong leading-none mt-3 mb-1"
+                                style={{
+                                    fontFamily: "var(--font-vt323), monospace",
+                                    fontSize: "clamp(2.8rem, 8vw, 5rem)",
+                                    color: "var(--primary)",
+                                    letterSpacing: "0.04em",
+                                }}
+                            >
+                                VICTOR BALAN
+                            </div>
+                            <div
+                                className="text-text-secondary"
+                                style={{
+                                    fontFamily: "var(--font-vt323), monospace",
+                                    fontSize: "clamp(1.2rem, 3vw, 1.8rem)",
+                                    letterSpacing: "0.06em",
+                                }}
+                            >
+                                DEPUTY, JAVA TECHNOLOGIES DEPARTMENT
+                            </div>
+                        </motion.div>
+
+                        {/* cat summary */}
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 2.3 }}
+                            className="pt-4"
+                        >
+                            <div className="flex items-center gap-2 text-sm font-mono mb-2">
+                                <span className="text-accent accent-glow">victor@workstation</span>
+                                <span className="text-text-muted">:~$</span>
+                                <span className="text-text-secondary">cat summary.txt</span>
+                            </div>
+                            <p className="text-text-secondary text-sm sm:text-base leading-relaxed max-w-2xl border-l-2 border-border pl-4 py-1">
+                                3+ years building production-grade systems at{" "}
+                                <span className="text-primary phosphor-glow">ASSIST Software</span>.
+                                Recently promoted to{" "}
+                                <span className="text-foreground">Deputy of the Java Technologies Department</span>{" "}
+                                — leading engineering standards while delivering high-throughput backends
+                                and zero-downtime migrations handling{" "}
+                                <span className="text-foreground font-bold">1M+ transactions/hour</span>.
+                            </p>
+                        </motion.div>
+
+                        {/* ls metrics */}
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 2.6 }}
+                            className="pt-4"
+                        >
+                            <div className="flex items-center gap-2 text-sm font-mono mb-3">
+                                <span className="text-accent accent-glow">victor@workstation</span>
+                                <span className="text-text-muted">:~$</span>
+                                <span className="text-text-secondary">ls -la ./metrics/</span>
+                            </div>
+                            <div className="flex flex-wrap gap-8 sm:gap-16">
+                                {STATS.map((s, i) => (
+                                    <div key={i}>
+                                        <div
+                                            className="phosphor-glow-strong leading-none"
+                                            style={{
+                                                fontFamily: "var(--font-vt323), monospace",
+                                                fontSize: "clamp(2rem, 5vw, 3rem)",
+                                                color: "var(--primary)",
+                                            }}
+                                        >
+                                            {s.value}
+                                        </div>
+                                        <div className="text-text-muted text-sm font-mono mt-0.5">{s.label}</div>
+                                    </div>
+                                ))}
+                            </div>
+                        </motion.div>
+
+                        {/* CTA commands */}
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 2.9 }}
+                            className="pt-5 flex flex-wrap gap-3"
+                        >
+                            <Link
+                                href="#experience"
+                                className="btn-primary inline-flex items-center gap-2 px-5 py-2.5 text-sm rounded-sm"
+                            >
+                                <span className="text-accent accent-glow">$</span>
+                                <span>view --experience</span>
+                            </Link>
+                            <Link
+                                href="#contact"
+                                className="btn-terminal inline-flex items-center gap-2 px-5 py-2.5 text-sm text-text-secondary rounded-sm"
+                            >
+                                <span className="text-text-muted">$</span>
+                                <span>./contact.sh</span>
+                            </Link>
+                            <Link
+                                href="https://github.com/victorbln"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="btn-terminal inline-flex items-center gap-1.5 px-4 py-2.5 text-sm text-text-muted rounded-sm hover:text-primary"
+                            >
+                                github
+                            </Link>
+                            <Link
+                                href="https://www.linkedin.com/in/balan-victor/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="btn-terminal inline-flex items-center gap-1.5 px-4 py-2.5 text-sm text-text-muted rounded-sm hover:text-primary"
+                            >
+                                linkedin
+                            </Link>
+                        </motion.div>
+
+                        {/* Blinking cursor prompt */}
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 3.1 }}
+                            className="pt-4 flex items-center gap-2 text-sm font-mono"
+                        >
+                            <span className="text-accent accent-glow">victor@workstation</span>
+                            <span className="text-text-muted">:~$</span>
+                            <span className="cursor-blink" />
+                        </motion.div>
+                    </div>
+                </div>
+
+            </motion.div>
+
+            {/* Scroll hint */}
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 3.5 }}
+                className="absolute bottom-8 left-1/2 -translate-x-1/2 text-text-muted font-mono flex flex-col items-center gap-2"
+                style={{ fontSize: "0.65rem", letterSpacing: "0.12em" }}
+            >
+                <span>SCROLL DOWN</span>
+                <motion.div
+                    animate={{ y: [0, 5, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                    className="text-primary phosphor-glow"
+                >
+                    ▼
+                </motion.div>
+            </motion.div>
+        </section>
+    );
 }

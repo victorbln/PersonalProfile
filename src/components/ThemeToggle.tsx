@@ -1,42 +1,35 @@
 "use client";
 
 import { useTheme } from "@/contexts/ThemeContext";
-import { Sun, Moon } from "lucide-react";
-import { motion } from "framer-motion";
 
 export default function ThemeToggle() {
     const { theme, toggleTheme } = useTheme();
 
+    // data-theme="dark" → amber phosphor
+    // data-theme="light" → green phosphor
+    const isAmber = theme === "dark";
+
     return (
-        <motion.button
+        <button
             onClick={toggleTheme}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="relative p-2.5 rounded-full bg-surface-alt border-2 border-border hover:border-primary/50 transition-all"
-            aria-label="Toggle theme"
+            className="btn-terminal flex items-center gap-2 px-3 py-1.5 text-xs rounded-sm text-text-muted hover:text-primary"
+            aria-label={`Switch to ${isAmber ? "green" : "amber"} phosphor`}
+            title={`Switch to ${isAmber ? "green" : "amber"} phosphor`}
         >
-            <motion.div
-                initial={false}
-                animate={{
-                    rotate: theme === "dark" ? 180 : 0,
-                    scale: theme === "dark" ? 0 : 1,
+            <span
+                className="w-2 h-2 rounded-full inline-block shrink-0"
+                style={{
+                    background: isAmber
+                        ? "oklch(0.72 0.185 65)"
+                        : "oklch(0.72 0.230 145)",
+                    boxShadow: isAmber
+                        ? "0 0 6px oklch(0.72 0.185 65 / 0.70)"
+                        : "0 0 6px oklch(0.72 0.230 145 / 0.70)",
                 }}
-                transition={{ duration: 0.3 }}
-                className="absolute inset-0 flex items-center justify-center"
-            >
-                <Sun className="h-5 w-5 text-primary" />
-            </motion.div>
-            <motion.div
-                initial={false}
-                animate={{
-                    rotate: theme === "dark" ? 0 : -180,
-                    scale: theme === "dark" ? 1 : 0,
-                }}
-                transition={{ duration: 0.3 }}
-                className="flex items-center justify-center"
-            >
-                <Moon className="h-5 w-5 text-primary" />
-            </motion.div>
-        </motion.button>
+            />
+            <span className="hidden sm:inline font-mono" style={{ fontSize: "0.68rem", letterSpacing: "0.08em" }}>
+                {isAmber ? "AMBER" : "GREEN"}
+            </span>
+        </button>
     );
 }

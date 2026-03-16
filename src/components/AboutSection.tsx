@@ -1,111 +1,152 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Code2, Rocket, Users, BookOpen } from "lucide-react";
-import AnimatedBackground from "./AnimatedBackground";
+
+const BEYOND = [
+    { key: "ARCH",    text: "Deep-diving into system architecture, design patterns, and distributed systems theory" },
+    { key: "MENTOR",  text: "Mentoring junior engineers and contributing to team knowledge sharing" },
+    { key: "FIRESC",  text: "Volunteering with FIRESC Students Association — co-organized the first and second annual hackathon" },
+    { key: "WRITING", text: "Writing technical articles on Medium about Quarkus, Spring, and backend engineering" },
+];
+
+function SectionPrompt({ label }: { label: string }) {
+    return (
+        <div className="flex items-center gap-2 text-xs font-mono mb-4">
+            <span className="text-accent accent-glow">victor@workstation</span>
+            <span className="text-text-muted">:~$</span>
+            <span className="text-text-secondary">{label}</span>
+        </div>
+    );
+}
 
 export default function AboutSection() {
     return (
-        <section id="about" className="py-24 sm:py-32 bg-surface-alt relative overflow-hidden">
-            <AnimatedBackground />
-            <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 blur-[100px] rounded-full"></div>
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/5 blur-[100px] rounded-full"></div>
+        <section id="about" className="py-24 sm:py-32 relative">
+            <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
 
-            <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 relative z-10">
+                {/* Section header */}
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 16 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="text-center mb-16"
+                    transition={{ duration: 0.5 }}
+                    className="mb-12"
                 >
-                    <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl mb-6">
-                        About <span className="text-gradient">Me</span>
-                    </h2>
-                </motion.div>
-
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                    className="prose prose-lg max-w-none"
-                >
-                    <div className="space-y-6 text-text-secondary text-lg leading-relaxed">
-                        <p>
-                            I'm a <span className="text-foreground font-medium">Backend Engineer & Deputy of the Java Technologies Department</span> based in <span className="text-foreground font-medium">Suceava, Romania</span>, specializing in
-                            backend engineering, cloud-native infrastructure, and distributed systems. I hold two Bachelor's degrees from
-                            <span className="text-foreground font-medium"> Ștefan cel Mare University</span> — one in
-                            <span className="text-primary font-medium"> Computer Science & Engineering</span> and one in
-                            <span className="text-primary font-medium"> Cybersecurity</span>.
-                        </p>
-                        <p>
-                            At <span className="text-primary font-medium">ASSIST Software</span>, I've grown from key technical contributor to leading the Java Technologies Department as Deputy. I've worked across multiple client projects spanning <span className="text-foreground font-medium">iGaming & entertainment platforms</span>,
-                            enterprise cloud migrations, and high-load backend systems — from architecture and backend development to DevOps automation, cross-team collaboration, and now engineering leadership.
-                        </p>
-                        <p>
-                            One of my proudest achievements was designing a <span className="text-foreground font-medium">zero-downtime data migration strategy</span> from
-                            NoSQL to SQL for a system handling over <span className="text-foreground font-medium">1M+ transactions per hour</span> —
-                            a challenge that deeply expanded my understanding of distributed systems under production constraints.
-                        </p>
-                        <p>
-                            I also led the <span className="text-foreground font-medium">CI/CD modernization</span> for a major project — migrating
-                            from on-premise tooling to GitLab with full infrastructure-as-code via Terraform — and drove a
-                            <span className="text-foreground font-medium"> 70% reduction in system load</span> through targeted refactoring and
-                            removal of legacy bottlenecks.
-                        </p>
-                    </div>
-                </motion.div>
-
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.4 }}
-                    className="mt-12"
-                >
-                    <h3 className="text-xl font-bold text-foreground mb-6">Beyond the code:</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {[
-                            { icon: Code2, text: "Deep-diving into system architecture, design patterns, and distributed systems theory" },
-                            { icon: Users, text: "Mentoring junior engineers and contributing to team knowledge sharing" },
-                            { icon: Rocket, text: "Volunteering with FIRESC Students Association — co-organized the first and second annual hackathon" },
-                            { icon: BookOpen, text: "Writing technical articles on Medium about Quarkus, Spring, and backend engineering" },
-                        ].map((item, index) => (
-                            <motion.div
-                                key={index}
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: 0.5 + index * 0.1 }}
-                                className="flex items-start gap-3 p-4 rounded-xl bg-surface border border-border hover:border-primary/30 transition-all"
-                            >
-                                <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                                    <item.icon className="h-5 w-5 text-primary" />
-                                </div>
-                                <p className="text-text-secondary flex-1">{item.text}</p>
-                            </motion.div>
-                        ))}
-                    </div>
-                </motion.div>
-
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.6 }}
-                    className="mt-12 text-center"
-                >
-                    <p className="text-lg text-text-secondary mb-6">
-                        Always open to discussing backend engineering, cloud architecture, or career growth.
-                    </p>
-                    <a
-                        href="#contact"
-                        className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-white font-semibold hover:bg-primary-hover transition-all shadow-lg shadow-primary/25 hover-scale"
+                    <div className="text-text-muted text-xs font-mono mb-2 uppercase tracking-widest">// section 01</div>
+                    <h2
+                        className="phosphor-glow-strong"
+                        style={{
+                            fontFamily: "var(--font-vt323), monospace",
+                            fontSize: "clamp(2.5rem, 6vw, 4rem)",
+                            color: "var(--primary)",
+                            letterSpacing: "0.06em",
+                        }}
                     >
-                        Get in touch
-                    </a>
+                        ABOUT.TXT
+                    </h2>
+                    <div className="term-divider mt-3" />
                 </motion.div>
+
+                {/* man page panel */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                >
+                    <div className="terminal-window">
+                        <div className="terminal-titlebar">
+                            <span className="terminal-dot" style={{ background: "#ff5f57" }} />
+                            <span className="terminal-dot" style={{ background: "#ffbd2e" }} />
+                            <span className="terminal-dot" style={{ background: "#28c840" }} />
+                            <span className="ml-3">man victor-balan</span>
+                        </div>
+
+                        <div className="p-5 sm:p-8 font-mono text-base space-y-6">
+
+                            {/* NAME */}
+                            <div>
+                                <div className="text-primary phosphor-glow text-sm uppercase tracking-widest mb-2 font-bold">NAME</div>
+                                <p className="text-text-secondary pl-4 text-sm">
+                                    <span className="text-foreground">victor-balan</span>
+                                    {" — "}Backend Engineer & Deputy, Java Technologies Department
+                                </p>
+                            </div>
+
+                            {/* SYNOPSIS */}
+                            <div>
+                                <div className="text-primary phosphor-glow text-sm uppercase tracking-widest mb-2 font-bold">SYNOPSIS</div>
+                                <div className="pl-4 text-sm text-text-muted panel-inset rounded-sm p-3">
+                                    <span className="text-accent">victor</span>{" "}
+                                    <span className="text-text-secondary">[--role deputy]</span>{" "}
+                                    <span className="text-text-secondary">[--company assist-software]</span>{" "}
+                                    <span className="text-text-secondary">[--stack java,spring-boot,k8s]</span>{" "}
+                                    <span className="text-text-secondary">[--location suceava-ro]</span>
+                                </div>
+                            </div>
+
+                            {/* DESCRIPTION */}
+                            <div>
+                                <div className="text-primary phosphor-glow text-sm uppercase tracking-widest mb-3 font-bold">DESCRIPTION</div>
+                                <div className="pl-4 space-y-3 border-l-2 border-border">
+                                    <p className="text-text-secondary text-base leading-relaxed">
+                                        Backend engineer based in{" "}
+                                        <span className="text-foreground">Suceava, Romania</span>,
+                                        specialising in backend engineering, cloud-native infrastructure, and distributed systems.
+                                        Holds two degrees from{" "}
+                                        <span className="text-foreground">Ștefan cel Mare University</span>{" — "}
+                                        <span className="text-primary">Computer Science & Engineering</span>
+                                        {" "}and{" "}
+                                        <span className="text-primary">Cybersecurity</span>.
+                                    </p>
+                                    <p className="text-text-secondary text-base leading-relaxed">
+                                        At <span className="text-primary">ASSIST Software</span>, grew from key technical contributor
+                                        to leading the Java Technologies Department as Deputy. Projects span{" "}
+                                        <span className="text-foreground">iGaming & entertainment platforms</span>,
+                                        enterprise cloud migrations, and high-load backend systems.
+                                    </p>
+                                    <p className="text-text-secondary text-base leading-relaxed">
+                                        Proudest achievement: a{" "}
+                                        <span className="text-foreground">zero-downtime NoSQL → SQL migration</span>{" "}
+                                        in a live system handling{" "}
+                                        <span className="text-foreground font-bold">1M+ transactions/hour</span>.
+                                        Led CI/CD modernization to GitLab + Terraform, driving a{" "}
+                                        <span className="text-foreground font-bold">70% reduction in system load</span>.
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* BEYOND CODE */}
+                            <div>
+                                <div className="text-primary phosphor-glow text-sm uppercase tracking-widest mb-3 font-bold">BEYOND_CODE</div>
+                                <div className="pl-4 space-y-2">
+                                    {BEYOND.map((item) => (
+                                        <div key={item.key} className="flex items-start gap-3 text-base">
+                                            <span className="text-accent accent-glow font-bold shrink-0 w-20 text-sm pt-0.5">{item.key}</span>
+                                            <span className="text-text-secondary leading-relaxed">{item.text}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* CTA */}
+                            <div className="pt-2 border-t border-border">
+                                <SectionPrompt label="echo 'open to new challenges'" />
+                                <div className="pl-4">
+                                    <a
+                                        href="#contact"
+                                        className="btn-primary inline-flex items-center gap-2 px-5 py-2.5 text-sm rounded-sm"
+                                    >
+                                        <span className="text-accent">$</span>
+                                        <span>./contact.sh</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </motion.div>
+
             </div>
         </section>
     );

@@ -1,165 +1,199 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { GraduationCap, Award, Users, MapPin, Calendar } from "lucide-react";
-import AnimatedBackground from "./AnimatedBackground";
 
 const degrees = [
-  {
-    degree: "Bachelor's Degree in Computer Science & Engineering",
-    institution: "Ștefan cel Mare University of Suceava",
-    period: "Oct 2021 – Jul 2025",
-    location: "Suceava, Romania",
-    color: "text-primary",
-    bg: "bg-primary/10",
-    border: "border-primary/20",
-  },
-  {
-    degree: "Master's Degree in Cybersecurity",
-    institution: "Ștefan cel Mare University of Suceava",
-    period: "Sep 2025 – Present",
-    location: "Suceava, Romania",
-    color: "text-secondary",
-    bg: "bg-secondary/10",
-    border: "border-secondary/20",
-  },
+    {
+        degree: "Bachelor's Degree in Computer Science & Engineering",
+        institution: "Ștefan cel Mare University of Suceava",
+        period: "Oct 2021 – Jul 2025",
+        location: "Suceava, Romania",
+        status: "COMPLETED",
+        statusColor: "var(--accent)",
+    },
+    {
+        degree: "Master's Degree in Cybersecurity",
+        institution: "Ștefan cel Mare University of Suceava",
+        period: "Sep 2025 – Present",
+        location: "Suceava, Romania",
+        status: "IN PROGRESS",
+        statusColor: "var(--primary)",
+    },
 ];
 
 const volunteering = [
-  {
-    org: "FIRESC Students Association",
-    role: "Volunteer",
-    period: "2022 – Present",
-    highlights: [
-      "Organized workshops for students that wanted to learn programming to contribute with my hands on experience.",
-      "Promoted technical knowledge sharing and skills development across students",
-    ],
-  },
+    {
+        org: "FIRESC Students Association",
+        role: "Volunteer",
+        period: "2022 – Present",
+        highlights: [
+            "Organized workshops for students that wanted to learn programming, contributing hands-on experience",
+            "Promoted technical knowledge sharing and skills development across students",
+            "Co-organized the first and second annual hackathon",
+        ],
+    },
 ];
 
 export default function EducationSection() {
-  return (
-    <section
-      id="education"
-      className="py-24 sm:py-32 bg-surface-alt relative overflow-hidden"
-    >
-      <AnimatedBackground />
-      <div className="absolute top-0 right-0 w-96 h-96 bg-secondary/5 blur-[100px] rounded-full"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 blur-[100px] rounded-full"></div>
+    return (
+        <section id="education" className="py-24 sm:py-32 relative">
+            <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16"
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
-            <GraduationCap className="h-4 w-4" />
-            <span>Education & Achievements</span>
-          </div>
-          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Academic <span className="text-gradient">Background</span>
-          </h2>
-        </motion.div>
-
-        {/* Degrees */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
-          {degrees.map((edu, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.15 }}
-              whileHover={{ y: -5 }}
-              className="group"
-            >
-              <div
-                className={`h-full rounded-2xl border-2 ${edu.border} bg-surface p-8 hover:shadow-glow transition-all shadow-md`}
-              >
-                <div
-                  className={`inline-flex h-12 w-12 items-center justify-center rounded-lg ${edu.bg} ${edu.color} mb-5`}
+                {/* Section header */}
+                <motion.div
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                    className="mb-12"
                 >
-                  <GraduationCap className="h-6 w-6" />
-                </div>
-                <h3 className={`text-lg font-bold ${edu.color} mb-2`}>
-                  {edu.degree}
-                </h3>
-                <p className="text-foreground font-medium mb-4">
-                  {edu.institution}
-                </p>
-                <div className="flex flex-wrap gap-4 text-sm text-text-secondary">
-                  <div className="flex items-center gap-1.5">
-                    <Calendar className="h-3.5 w-3.5" />
-                    <span>{edu.period}</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <MapPin className="h-3.5 w-3.5" />
-                    <span>{edu.location}</span>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+                    <div className="text-text-muted text-xs font-mono mb-2 uppercase tracking-widest">// section 03</div>
+                    <h2
+                        className="phosphor-glow-strong"
+                        style={{
+                            fontFamily: "var(--font-vt323), monospace",
+                            fontSize: "clamp(2.5rem, 6vw, 4rem)",
+                            color: "var(--primary)",
+                            letterSpacing: "0.06em",
+                        }}
+                    >
+                        CREDENTIALS.DB
+                    </h2>
+                    <div className="term-divider mt-3" />
+                </motion.div>
 
-        {/* Volunteering & Achievements */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="mb-8"
-        >
-          <h3 className="text-xl font-bold text-foreground flex items-center gap-2 mb-6">
-            <Award className="h-5 w-5 text-primary" />
-            Volunteering & Achievements
-          </h3>
-        </motion.div>
+                {/* cat /etc/credentials */}
+                <div className="terminal-window mb-6">
+                    <div className="terminal-titlebar">
+                        <span className="terminal-dot" style={{ background: "#ff5f57" }} />
+                        <span className="terminal-dot" style={{ background: "#ffbd2e" }} />
+                        <span className="terminal-dot" style={{ background: "#28c840" }} />
+                        <span className="ml-3">cat /etc/academic-credentials</span>
+                    </div>
 
-        <div className="max-w-2xl mx-auto">
-          {volunteering.map((vol, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 + index * 0.15 }}
-              className="rounded-2xl border-2 border-border bg-surface p-8 hover:border-primary/30 hover:shadow-glow transition-all shadow-md"
-            >
-              <div className="flex items-start justify-between gap-4 mb-4">
-                <div className="flex items-start gap-3">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mt-0.5">
-                    <Users className="h-5 w-5 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-foreground">{vol.org}</h4>
-                    <p className="text-sm text-primary font-medium">
-                      {vol.role}
-                    </p>
-                  </div>
+                    <div className="divide-y divide-border">
+                        {degrees.map((edu, index) => (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, y: 16 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: index * 0.12 }}
+                                className="p-5 sm:p-8 font-mono scan-hover"
+                            >
+                                {/* Record header */}
+                                <div className="flex items-center justify-between flex-wrap gap-3 mb-4">
+                                    <div className="flex items-center gap-2 text-sm">
+                                        <span className="text-text-muted">RECORD</span>
+                                        <span className="text-text-muted">[{String(index + 1).padStart(3, "0")}]</span>
+                                    </div>
+                                    <span
+                                        className="text-sm px-2.5 py-0.5 rounded-sm border font-bold"
+                                        style={{
+                                            color: edu.statusColor,
+                                            borderColor: `${edu.statusColor}60`,
+                                            background: `${edu.statusColor}12`,
+                                        }}
+                                    >
+                                        ◈ {edu.status}
+                                    </span>
+                                </div>
+
+                                {/* Degree */}
+                                <div
+                                    className="mb-2 phosphor-glow"
+                                    style={{
+                                        fontFamily: "var(--font-vt323), monospace",
+                                        fontSize: "1.55rem",
+                                        color: "var(--primary)",
+                                        letterSpacing: "0.04em",
+                                    }}
+                                >
+                                    {edu.degree.toUpperCase()}
+                                </div>
+
+                                {/* Details grid */}
+                                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-sm mt-3">
+                                    <div>
+                                        <span className="text-text-muted">institution: </span>
+                                        <span className="text-text-secondary">{edu.institution}</span>
+                                    </div>
+                                    <div>
+                                        <span className="text-text-muted">period:      </span>
+                                        <span className="text-text-secondary">{edu.period}</span>
+                                    </div>
+                                    <div>
+                                        <span className="text-text-muted">location:    </span>
+                                        <span className="text-text-secondary">{edu.location}</span>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
                 </div>
-                <span className="text-xs text-text-muted bg-surface-alt border border-border px-3 py-1 rounded-full whitespace-nowrap">
-                  {vol.period}
-                </span>
-              </div>
-              <ul className="space-y-2">
-                {vol.highlights.map((h, i) => (
-                  <li
-                    key={i}
-                    className="flex items-start gap-2 text-sm text-text-secondary"
-                  >
-                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
-                    {h}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+
+                {/* Volunteering */}
+                <motion.div
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.25 }}
+                >
+                    <div className="text-text-muted text-xs font-mono mb-4 uppercase tracking-widest">
+                        — volunteering & community
+                    </div>
+
+                    <div className="terminal-window">
+                        <div className="terminal-titlebar">
+                            <span className="terminal-dot" style={{ background: "#ff5f57" }} />
+                            <span className="terminal-dot" style={{ background: "#ffbd2e" }} />
+                            <span className="terminal-dot" style={{ background: "#28c840" }} />
+                            <span className="ml-3">cat /etc/community-contributions</span>
+                        </div>
+
+                        {volunteering.map((vol, index) => (
+                            <div key={index} className="p-5 sm:p-8 font-mono">
+                                <div className="flex items-center justify-between flex-wrap gap-3 mb-4">
+                                    <div>
+                                        <div
+                                            className="phosphor-glow mb-1"
+                                            style={{
+                                                fontFamily: "var(--font-vt323), monospace",
+                                                fontSize: "1.55rem",
+                                                color: "var(--primary)",
+                                                letterSpacing: "0.04em",
+                                            }}
+                                        >
+                                            {vol.org.toUpperCase()}
+                                        </div>
+                                        <div className="text-accent accent-glow text-sm">{vol.role}</div>
+                                    </div>
+                                    <span
+                                        className="text-sm px-3 py-1 rounded-sm border font-mono"
+                                        style={{
+                                            color: "var(--text-muted)",
+                                            borderColor: "var(--border)",
+                                            background: "var(--surface-alt)",
+                                        }}
+                                    >
+                                        {vol.period}
+                                    </span>
+                                </div>
+
+                                <ul className="space-y-2">
+                                    {vol.highlights.map((h, i) => (
+                                        <li key={i} className="flex items-start gap-3 text-sm sm:text-base text-text-secondary">
+                                            <span className="text-primary phosphor-glow shrink-0 mt-0.5">+</span>
+                                            <span>{h}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))}
+                    </div>
+                </motion.div>
+
+            </div>
+        </section>
+    );
 }
